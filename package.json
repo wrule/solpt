@@ -8,9 +8,8 @@
     "clean": "npx hardhat clean && rimraf cache",
     "test": "npx hardhat test",
     "node": "npx hardhat node",
-    "watch": "tsc --watch",
-    "new": "ts-node commands/new.ts",
-    "patch": "commands/patch.sh"
+    "patch": "commands/patch.sh",
+    "new": "ts-node commands/new.ts"
   },
   "license": "MIT",
   "private": false,
