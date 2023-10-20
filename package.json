@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "npx hardhat run dev/index.ts",
     "build": "npx hardhat compile",
     "clean": "npx hardhat clean && rimraf cache",
     "test": "npx hardhat test",
     "node": "npx hardhat node",
     "watch": "tsc --watch",
-    "dev": "node dist/dev.js",
     "new": "ts-node commands/new.ts",
     "patch": "commands/patch.sh"
   },
