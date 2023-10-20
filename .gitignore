@@ -135,3 +135,11 @@ output/
 *.csv
 *.zip
 *.tar.gz
+
+coverage.json
+typechain
+typechain-types
+
+# Hardhat files
+cache
+artifacts
