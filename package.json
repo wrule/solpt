@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "pack": "script/pack.sh",
-    "clean": "rm -rf dist",
+    "build": "npx hardhat compile",
+    "clean": "npx hardhat clean",
     "watch": "tsc --watch",
     "dev": "node dist/dev.js",
     "new": "ts-node script/new.ts",
