@@ -7,8 +7,8 @@
     "clean": "npx hardhat clean && rimraf cache",
     "watch": "tsc --watch",
     "dev": "node dist/dev.js",
-    "new": "ts-node script/new.ts",
-    "patch": "script/patch.sh"
+    "new": "ts-node commands/new.ts",
+    "patch": "commands/patch.sh"
   },
   "license": "MIT",
   "private": false,
