@@ -16,6 +16,7 @@
   "private": false,
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
     "@types/node": "18.16.1",
     "dayjs": "1.11.9",
     "global-agent": "3.0.0",
