@@ -33,8 +33,8 @@ contract X1 {
   error sendETHError(address addr, uint num);
   function sendETH(address addr, uint num) external payable {
     setX(num);
-    payable(addr).transfer(msg.value);
+    (bool success, ) = payable(addr).call{ value: msg.value }("");
     // bool success = payable(addr).send(msg.value);
-    // if (!success) revert sendETHError(addr, num);
+    if (!success) revert sendETHError(addr, num);
   }
 }
