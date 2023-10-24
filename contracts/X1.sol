@@ -30,10 +30,11 @@ contract X1 {
     // }
   }
 
-  event sendETHError(address addr, uint num);
+  error sendETHError(address addr, uint num);
   function sendETH(address addr, uint num) external payable {
     setX(num);
-    bool success = payable(addr).send(msg.value);
-    if (!success) emit sendETHError(addr, num);
+    payable(addr).transfer(msg.value);
+    // bool success = payable(addr).send(msg.value);
+    // if (!success) revert sendETHError(addr, num);
   }
 }
