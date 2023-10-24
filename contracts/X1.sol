@@ -23,15 +23,17 @@ contract X1 {
 
   event receiveEvent();
   receive() external payable {
-    setX(101);
+    // setX(101);
     // uint i = 0;
     // for (i = 0; i < 30000; ++i) {
     //   emit receiveEvent();
     // }
   }
 
+  event sendETHError(address addr, uint num);
   function sendETH(address addr, uint num) external payable {
     setX(num);
-    payable(addr).transfer(msg.value);
+    bool success = payable(addr).send(msg.value);
+    if (!success) emit sendETHError(addr, num);
   }
 }
