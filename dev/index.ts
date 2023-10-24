@@ -32,12 +32,14 @@ async function deployContract(name: string) {
 
 async function sendETH(address: string, amount: number) {
   console.log('<SendETH>');
-  console.log('sendTransaction...');
+  const key = amount.toString() + 'ETH';
+  console.log(key, short_address(signer.address), 'to', short_address(address));
+  console.log(key, 'sendTransaction...');
   const tx = await signer.sendTransaction({
     to: address,
     value: ethers.parseEther(amount.toString()),
   });
-  console.log('wait...');
+  console.log(key, 'wait...');
   await tx.wait();
 }
 
@@ -45,7 +47,7 @@ async function main() {
   signer = (await ethers.getSigners())[0];
   const x1 = await deployContract('X1');
   console.log(x1.target);
-  await sendETH(x1.target.toString(), 1);
+  await sendETH(x1.target.toString(), 1000.1);
   // const signer = (await ethers.getSigners())[0];
   // console.log(signer.address);
   // await logBalance(signer);
