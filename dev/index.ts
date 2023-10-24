@@ -51,19 +51,9 @@ async function sendETH(address: string, amount: number) {
 async function main() {
   signer = (await ethers.getSigners())[0];
   const x1 = await deployContract('X1');
-  console.log(x1.target);
   await meta(x1.target.toString());
   await sendETH(x1.target.toString(), 1000.1);
   await meta(x1.target.toString());
-  // const signer = (await ethers.getSigners())[0];
-  // console.log(signer.address);
-  // await logBalance(signer);
-  // const tx = await signer.sendTransaction({
-  //   to: ethers.Wallet.createRandom().address,
-  //   value: ethers.parseEther('1'),
-  // });
-  // await tx.wait();
-  // await logBalance(signer);
 }
 
 main();
