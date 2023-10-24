@@ -16,9 +16,10 @@ function short_address(address: string) {
 
 async function meta(address?: string) {
   console.log();
-  console.log(`<Meta ${short_address(signer.address)}>`);
-  const balance = ethers.formatEther(await signer.provider.getBalance(address ?? signer.address));
-  console.log(balance + 'ETH', signer.address);
+  address = address ?? signer.address;
+  console.log(`<Meta ${short_address(address)}>`);
+  const balance = ethers.formatEther(await signer.provider.getBalance(address));
+  console.log(balance + 'ETH', address);
 }
 
 async function deployContract(name: string) {
