@@ -10,6 +10,12 @@ async function init() {
 }
 
 export
+function getSigner() { return signer; }
+
+export
+function getOtherSigners() { return otherSigners; }
+
+export
 function short_address(address: string) {
   return address.slice(0, 5) + '...' + address.slice(address.length - 3);
 }
