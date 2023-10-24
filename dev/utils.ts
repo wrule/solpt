@@ -1,15 +1,12 @@
 import { ethers } from 'hardhat';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
 
-let _signer!: HardhatEthersSigner;
-let _otherSigners!: HardhatEthersSigner[];
-
-export const signer = _signer;
-export const otherSigners = _otherSigners;
+let signer: HardhatEthersSigner;
+let otherSigners: HardhatEthersSigner[];
 
 export
 async function init() {
-  [_signer, ..._otherSigners] = await ethers.getSigners();
+  [signer, ...otherSigners] = await ethers.getSigners();
 }
 
 export

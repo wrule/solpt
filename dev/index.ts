@@ -1,10 +1,11 @@
 import { ethers } from 'hardhat';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
 import { X1, X2 } from '../typechain-types';
-import { deployContract, init, meta, signer } from './utils';
+import { deployContract, init, meta } from './utils';
 
 async function main() {
   await init();
+  meta();
   const x1 = await deployContract<X1>('X1');
   const x2 = await deployContract<X2>('X2');
   try {
