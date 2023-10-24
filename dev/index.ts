@@ -14,8 +14,8 @@ function short_address(address: string) {
   return address.slice(0, 5) + '...' + address.slice(address.length - 3);
 }
 
-async function meta() {
-  const balance = ethers.formatEther(await signer.provider.getBalance(signer.address));
+async function meta(address?: string) {
+  const balance = ethers.formatEther(await signer.provider.getBalance(address ?? signer.address));
   console.log(short_address(signer.address), balance + 'ETH');
 }
 
