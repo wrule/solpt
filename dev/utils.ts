@@ -16,7 +16,7 @@ export
 function getOtherSigners() { return otherSigners; }
 
 export
-function short_address(address: string) {
+function shortAddress(address: string) {
   return address.slice(0, 5) + '...' + address.slice(address.length - 3);
 }
 
@@ -24,7 +24,7 @@ export
 async function meta(address?: string) {
   console.log();
   address = address ?? signer.address;
-  console.log(`<Meta ${short_address(address)}>`);
+  console.log(`<Meta ${shortAddress(address)}>`);
   const balance = ethers.formatEther(await signer.provider.getBalance(address));
   console.log(balance + 'ETH', address);
 }
@@ -47,7 +47,7 @@ async function sendETH(address: string, amount: number) {
   console.log();
   console.log('<SendETH>');
   const key = amount.toString() + 'ETH';
-  console.log(key, short_address(signer.address), 'to', short_address(address));
+  console.log(key, shortAddress(signer.address), 'to', shortAddress(address));
   console.log(key, 'sendTransaction...');
   const tx = await signer.sendTransaction({
     to: address,
