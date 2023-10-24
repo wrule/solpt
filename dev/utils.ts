@@ -39,7 +39,7 @@ async function deployContract<T>(
   console.log();
   console.log('<DeployContract>');
   console.log(name, 'deployContract...');
-  let contract = await ethers.deployContract(name, args, signerOrOptions);
+  let contract = await ethers.deployContract(name, args ?? [], signerOrOptions);
   console.log(name, 'waitForDeployment...');
   contract = await contract.waitForDeployment();
   console.log(name, 'deployment successful!');
