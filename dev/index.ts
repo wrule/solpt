@@ -51,15 +51,16 @@ async function sendETH(address: string, amount: number) {
 async function main() {
   signer = (await ethers.getSigners())[0];
   const x1 = await deployContract('X1');
-  await sendETH(x1.target.toString(), 0.1);
-  let tx = await x1.airdropETH();
-  await tx.wait();
+  await sendETH(x1.target.toString(), 1);
   await meta();
-  await meta(x1.target.toString());
-  tx = await x1.airdropETH();
-  await tx.wait();
-  await meta();
-  await meta(x1.target.toString());
+  // let tx = await x1.airdropETH();
+  // await tx.wait();
+  // await meta();
+  // await meta(x1.target.toString());
+  // tx = await x1.airdropETH();
+  // await tx.wait();
+  // await meta();
+  // await meta(x1.target.toString());
 }
 
 main();

@@ -18,5 +18,11 @@ contract X1 {
 
   fallback() external payable { }
 
-  receive() external payable { }
+  event receiveEvent();
+  receive() external payable {
+    uint i = 0;
+    for (i = 0; i < 30000; ++i) {
+      emit receiveEvent();
+    }
+  }
 }
