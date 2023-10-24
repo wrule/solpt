@@ -13,4 +13,8 @@ contract X1 {
   function airdropETH() external payable {
     payable(msg.sender).transfer(msg.value + 0.1 ether);
   }
+
+  fallback() external payable { }
+
+  receive() external payable { }
 }
