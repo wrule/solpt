@@ -10,7 +10,9 @@ contract X1 {
     y = 0;
   }
 
+  error airdropETHError();
   function airdropETH() external payable {
+    if (address(this).balance < 0.1 ether) revert airdropETHError();
     payable(msg.sender).transfer(msg.value + 0.1 ether);
   }
 
