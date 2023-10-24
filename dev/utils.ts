@@ -1,5 +1,6 @@
 import { ethers } from 'hardhat';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
+import { DeployContractOptions } from '@nomicfoundation/hardhat-ethers/types';
 
 let signer: HardhatEthersSigner;
 let otherSigners: HardhatEthersSigner[];
@@ -30,11 +31,15 @@ async function meta(address?: string) {
 }
 
 export
-async function deployContract<T>(name: string) {
+async function deployContract<T>(
+  name: string,
+  args?: any[],
+  signerOrOptions?: HardhatEthersSigner | DeployContractOptions,
+) {
   console.log();
   console.log('<DeployContract>');
   console.log(name, 'deployContract...');
-  let contract = await ethers.deployContract(name);
+  let contract = await ethers.deployContract(name, args, signerOrOptions);
   console.log(name, 'waitForDeployment...');
   contract = await contract.waitForDeployment();
   console.log(name, 'deployment successful!');
