@@ -15,11 +15,14 @@ function short_address(address: string) {
 }
 
 async function meta(address?: string) {
+  console.log();
+  console.log(`<Meta ${short_address(signer.address)}>`);
   const balance = ethers.formatEther(await signer.provider.getBalance(address ?? signer.address));
-  console.log(short_address(signer.address), balance + 'ETH');
+  console.log(balance + 'ETH', signer.address);
 }
 
 async function deployContract(name: string) {
+  console.log();
   console.log('<DeployContract>');
   console.log(name, 'deployContract...');
   let contract = await ethers.deployContract(name);
@@ -31,6 +34,7 @@ async function deployContract(name: string) {
 }
 
 async function sendETH(address: string, amount: number) {
+  console.log();
   console.log('<SendETH>');
   const key = amount.toString() + 'ETH';
   console.log(key, short_address(signer.address), 'to', short_address(address));
@@ -47,7 +51,9 @@ async function main() {
   signer = (await ethers.getSigners())[0];
   const x1 = await deployContract('X1');
   console.log(x1.target);
+  await meta(x1.target.toString());
   await sendETH(x1.target.toString(), 1000.1);
+  await meta(x1.target.toString());
   // const signer = (await ethers.getSigners())[0];
   // console.log(signer.address);
   // await logBalance(signer);
