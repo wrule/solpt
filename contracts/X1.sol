@@ -30,7 +30,7 @@ contract X1 {
     // }
   }
 
-  function sendETH(address addr, uint amount) external {
-    payable(addr).transfer(amount);
+  function sendETH(address addr) external payable {
+    payable(addr).transfer(msg.value);
   }
 }
