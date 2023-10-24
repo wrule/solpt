@@ -20,14 +20,13 @@ async function meta() {
 
 async function deployContract(name: string) {
   console.log('<DeployContract>');
-  meta();
   console.log(name, 'deployContract...');
   let contract = await ethers.deployContract(name);
   console.log(name, 'waitForDeployment...');
   contract = await contract.waitForDeployment();
   console.log(name, 'deployment successful!');
   console.log(name, 'contract address:', contract.target);
-  meta();
+  return contract;
 }
 
 async function main() {
