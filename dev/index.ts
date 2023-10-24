@@ -52,7 +52,7 @@ async function main() {
   signer = (await ethers.getSigners())[0];
   const x1 = await deployContract<X1>('X1');
   const x2 = await deployContract<X2>('X2');
-  const tx = await x1.sendETH(x2.target, { value: ethers.parseEther('1') });
+  const tx = await x1.sendETH(x2.target, 123, { value: ethers.parseEther('1') });
   await tx.wait();
   meta(x2.target.toString());
 }
