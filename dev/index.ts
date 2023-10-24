@@ -1,6 +1,7 @@
 import { ethers } from 'hardhat';
 import hardhat from 'hardhat';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
+import { X1 } from '../typechain-types';
 
 let signer: HardhatEthersSigner;
 
@@ -29,9 +30,22 @@ async function deployContract(name: string) {
   return contract;
 }
 
+async function sendETH(address: string, amount: number) {
+  console.log('<SendETH>');
+  console.log('sendTransaction...');
+  const tx = await signer.sendTransaction({
+    to: address,
+    value: ethers.parseEther(amount.toString()),
+  });
+  console.log('wait...');
+  await tx.wait();
+}
+
 async function main() {
   signer = (await ethers.getSigners())[0];
-  await deployContract('X1');
+  const x1 = await deployContract('X1');
+  console.log(x1.target);
+  await sendETH(x1.target.toString(), 1);
   // const signer = (await ethers.getSigners())[0];
   // console.log(signer.address);
   // await logBalance(signer);
