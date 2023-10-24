@@ -1,7 +1,7 @@
 import { ethers } from 'hardhat';
 import hardhat from 'hardhat';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
-import { X1 } from '../typechain-types';
+import { X1, X2 } from '../typechain-types';
 
 let signer: HardhatEthersSigner;
 
@@ -22,7 +22,7 @@ async function meta(address?: string) {
   console.log(balance + 'ETH', address);
 }
 
-async function deployContract(name: string) {
+async function deployContract<T>(name: string) {
   console.log();
   console.log('<DeployContract>');
   console.log(name, 'deployContract...');
@@ -31,7 +31,7 @@ async function deployContract(name: string) {
   contract = await contract.waitForDeployment();
   console.log(name, 'deployment successful!');
   console.log(name, 'contract address:', contract.target);
-  return contract;
+  return contract as T;
 }
 
 async function sendETH(address: string, amount: number) {
@@ -50,25 +50,8 @@ async function sendETH(address: string, amount: number) {
 
 async function main() {
   signer = (await ethers.getSigners())[0];
-  const x1 = await deployContract('X1');
-  try {
-    await sendETH(x1.target.toString(), 1);
-  } catch (error) {
-    console.error(error);
-  }
-  await meta();
-
-  const a = await ((x1 as any) as X1).x();
-  console.log(a);
-
-  // let tx = await x1.airdropETH();
-  // await tx.wait();
-  // await meta();
-  // await meta(x1.target.toString());
-  // tx = await x1.airdropETH();
-  // await tx.wait();
-  // await meta();
-  // await meta(x1.target.toString());
+  const x1 = await deployContract<X1>('X1');
+  const x2 = await deployContract<X2>('X2');
 }
 
 main();
