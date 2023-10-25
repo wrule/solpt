@@ -60,4 +60,5 @@ async function sendETH(address: string, amount: number) {
   });
   console.log(key, 'wait...');
   await tx.wait();
+  return tx;
 }
