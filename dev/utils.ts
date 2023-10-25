@@ -48,6 +48,11 @@ async function deployContract<T>(
 }
 
 export
+async function getContract<T>(name: string, address: string) {
+  return await ethers.getContractAt(name, address, signer) as T;
+}
+
+export
 async function sendETH(address: string, amount: number) {
   console.log();
   console.log('<SendETH>');
