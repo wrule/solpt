@@ -7,10 +7,10 @@ contract X3 {
     emit sendMessageEvent(message);
   }
 
-  event receiveEvent(address sender, uint value);
-  receive() external payable {
-    emit receiveEvent(msg.sender, msg.value);
-  }
+  // event receiveEvent(address sender, uint value);
+  // receive() external payable {
+  //   emit receiveEvent(msg.sender, msg.value);
+  // }
 
   event fallbackEvent(address sender, uint value, bytes data);
   fallback() external payable {
