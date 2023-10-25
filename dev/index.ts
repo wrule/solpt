@@ -1,7 +1,7 @@
 import { init, meta } from './utils';
 
 async function main() {
-  meta();
+  await meta();
 }
 
 async function dev() {
