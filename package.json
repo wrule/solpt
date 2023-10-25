@@ -3,7 +3,7 @@
   "version": "0.1.4",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "npx hardhat run dev/index.ts",
+    "dev": "npx hardhat run dev/index.ts --network localhost",
     "build": "npx hardhat compile",
     "clean": "npx hardhat clean && rimraf cache",
     "test": "npx hardhat test",
