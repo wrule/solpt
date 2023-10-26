@@ -1,4 +1,5 @@
 import { ethers } from 'hardhat';
+import { ContractEventPayload, Contract } from 'ethers';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
 import { DeployContractOptions } from '@nomicfoundation/hardhat-ethers/types';
 
@@ -50,6 +51,13 @@ async function deployContract<T>(
 export
 async function getContract<T>(name: string, address: string) {
   return await ethers.getContractAt(name, address, signer) as T;
+}
+
+export
+async function watchContract(contract: Contract | any) {
+  contract.on('*', (payload: ContractEventPayload) => {
+    console.log(payload.fragment.name, payload.args);
+  });
 }
 
 export
