@@ -9,7 +9,8 @@ contract X4 {
     list.push(message);
     // bytes memory data = abi.encodePacked(msg.sig);
     // bytes memory data = abi.encodePacked(this.sendMessage.selector);
-    bytes memory data = abi.encodePacked(bytes4(keccak256("sendMessage(string)")));
+    // bytes memory data = abi.encodePacked(bytes4(keccak256("sendMessage(string)")));
+    bytes memory data = abi.encodePacked(bytes4("ABCD"), bytes4("1234"));
     emit sendMessageEvent(message, data);
   }
 }
