@@ -1,5 +1,5 @@
 import { ethers } from 'hardhat';
-import { ContractEventPayload, Contract } from 'ethers';
+import { ContractEventPayload, Contract, ParamType } from 'ethers';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
 import { DeployContractOptions } from '@nomicfoundation/hardhat-ethers/types';
 
@@ -16,6 +16,18 @@ function getSigner() { return signer; }
 
 export
 function getOtherSigners() { return otherSigners; }
+
+export
+function abiCallData(
+  prototype: string,
+  args: [string | ParamType, any][],
+) {
+  return ethers.keccak256(ethers.toUtf8Bytes(prototype)).slice(0, 10) +
+    ethers.AbiCoder.defaultAbiCoder().encode(
+      args.map((arg) => arg[0]),
+      args.map((arg) => arg[1]),
+    ).replace('0x', '');
+}
 
 export
 function shortAddress(address: string) {
