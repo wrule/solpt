@@ -7,8 +7,8 @@ async function main() {
   x4.on(x4.getEvent('sendMessageEvent'), (message, data) => {
     console.log(message, data);
   });
-  await x4.sendMessage('A');
-  await x4.sendMessage('B');
+  await x4.sendMessage('ABC');
+  // await x4.sendMessage('B');
   // const text = await x4.list(0);
   // console.log(text);
 }
