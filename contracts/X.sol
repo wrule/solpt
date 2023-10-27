@@ -4,6 +4,11 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 
 contract X {
+
+  function ecd(bytes32 hash, bytes memory signature) external pure returns (address) {
+    return ECDSA.recover(hash, signature);
+  }
+
   event sendMessageEvent(address message);
   function sendMessage(string memory message) public {
     // emit sendMessageEvent(keccak256("ABCD"));

@@ -8,9 +8,9 @@ async function main() {
   // watchContract(x);
   // await x.sendMessage('ABCD');
   const data = ethers.toUtf8Bytes('ABCD');
-  const a = await getSigner().signMessage(data);
-  console.log(a);
-  const b = ethers.verifyMessage(data, a);
+  const signature = await getSigner().signMessage(data);
+  console.log(signature);
+  const b = ethers.verifyMessage(data, signature);
   console.log(b);
   // const a = ethers.keccak256(ethers.toUtf8Bytes(text));
   // console.log(a);
