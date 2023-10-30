@@ -7,8 +7,8 @@ import "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
 using ECDSA for bytes32;
 
 contract X {
-  function ecd(bytes32 hash, bytes memory signature) external pure returns (address) {
-    return ECDSA.recover(MessageHashUtils.toEthSignedMessageHash(hash), signature);
+  function ecd(bytes memory data, bytes memory signature) external pure returns (address) {
+    return ECDSA.recover(MessageHashUtils.toEthSignedMessageHash(keccak256(data)), signature);
   }
 
   event sendMessageEvent(address message);
