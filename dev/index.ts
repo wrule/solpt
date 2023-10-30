@@ -5,7 +5,8 @@ import { X } from '../typechain-types';
 async function main() {
   await meta();
   const x = await deployContract<X>('X');
-  const a = ethers.solidityPackedKeccak256(['address', 'uint256'], ['0x5B38Da6a701c568545dCfcB03FcB875f56beddC4', 0]);
+  const data = 'ABCD';
+  const a = ethers.keccak256(ethers.toUtf8Bytes(data));
   console.log(a);
   const b = ethers.solidityPackedKeccak256(['string', 'bytes32'], ['\x19Ethereum Signed Message:\n32', a]);
   console.log(b);
