@@ -5,7 +5,7 @@ import { X } from '../typechain-types';
 async function main() {
   await meta();
   const x = await deployContract<X>('X');
-  const data = ethers.toUtf8Bytes('ABCD');
+  const data = ethers.toUtf8Bytes('你好，世界');
 
   const signature = await getSigner().signMessage(
     ethers.getBytes(
