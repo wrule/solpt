@@ -10,7 +10,7 @@ async function main() {
   console.log(a);
   const b = ethers.solidityPackedKeccak256(['string', 'bytes32'], ['\x19Ethereum Signed Message:\n32', a]);
   console.log(b);
-  const buffer = Buffer.from('1bf2c0ce4546651a1a2feb457b39d891a6b83931cc2454434f39961345ac378c', 'hex');
+  const buffer = Buffer.from(a.replace('0x', ''), 'hex');
   const c = await wallet.signMessage(buffer);
   console.log(c);
   // await meta();
