@@ -8,7 +8,7 @@ using ECDSA for bytes32;
 
 contract X {
   function ecd(bytes32 hash, bytes memory signature) external pure returns (address) {
-    return ECDSA.recover(hash, signature);
+    return ECDSA.recover(MessageHashUtils.toEthSignedMessageHash(hash), signature);
   }
 
   event sendMessageEvent(address message);

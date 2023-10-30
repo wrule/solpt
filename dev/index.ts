@@ -13,7 +13,7 @@ async function main() {
   const buffer = Buffer.from(a.replace('0x', ''), 'hex');
   const c = await getSigner().signMessage(buffer);
   console.log(c);
-  const d = await x.ecd(b, c);
+  const d = await x.ecd(a, c);
   console.log(d);
 }
 
