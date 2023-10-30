@@ -2,11 +2,14 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
+import "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
+
+using ECDSA for bytes32;
 
 contract X {
 
-  function ecd(bytes32 hash, bytes memory signature) external pure returns (address) {
-    return ECDSA.recover(hash, signature);
+  function ecd(bytes memory data, bytes memory signature) external pure returns (address) {
+    return ECDSA.recover(MessageHashUtils.toEthSignedMessageHash(keccak256(abi.encodePacked(data))), signature);
   }
 
   event sendMessageEvent(address message);
