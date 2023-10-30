@@ -12,7 +12,7 @@ async function main() {
       ethers.keccak256(data)
     )
   );
-  const address = await x.ecd(data, signature);
+  const address = await x.recover(data, signature);
   console.log(address);
 }
 
