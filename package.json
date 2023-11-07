@@ -6,6 +6,8 @@
     "dev": "npx hardhat run dev/index.ts --network localhost",
     "dev:goerli": "npx hardhat run dev/index.ts --network goerli",
     "dev:sepolia": "npx hardhat run dev/index.ts --network sepolia",
+    "verify:goerli": "npx hardhat verify --network goerli",
+    "verify:sepolia": "npx hardhat verify --network sepolia",
     "build": "npx hardhat compile",
     "clean": "npx hardhat clean && rimraf cache",
     "test": "npx hardhat test",
