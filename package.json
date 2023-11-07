@@ -4,7 +4,8 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "npx hardhat run dev/index.ts --network localhost",
-    "dev:test": "npx hardhat run dev/index.ts --network sepolia",
+    "dev:goerli": "npx hardhat run dev/index.ts --network goerli",
+    "dev:sepolia": "npx hardhat run dev/index.ts --network sepolia",
     "build": "npx hardhat compile",
     "clean": "npx hardhat clean && rimraf cache",
     "test": "npx hardhat test",
@@ -15,6 +16,7 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
+    "@chainlink/contracts": "^0.8.0",
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
     "@openzeppelin/contracts": "^5.0.0",
     "@types/node": "18.16.1",
