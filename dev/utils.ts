@@ -20,6 +20,11 @@ export
 function getOtherSigners() { return otherSigners; }
 
 export
+function changeSigner(signer: HardhatEthersSigner) {
+  currentSigner = signer;
+}
+
+export
 function abiCallData(
   prototype: string,
   args: [string | ParamType, any][],
