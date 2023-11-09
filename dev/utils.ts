@@ -5,14 +5,16 @@ import { DeployContractOptions } from '@nomicfoundation/hardhat-ethers/types';
 
 let signer: HardhatEthersSigner;
 let otherSigners: HardhatEthersSigner[];
+let currentSigner: HardhatEthersSigner;
 
 export
 async function init() {
   [signer, ...otherSigners] = await ethers.getSigners();
+  currentSigner = signer;
 }
 
 export
-function getSigner() { return signer; }
+function getSigner() { return currentSigner; }
 
 export
 function getOtherSigners() { return otherSigners; }
@@ -37,9 +39,9 @@ function shortAddress(address: string) {
 export
 async function meta(address?: string) {
   console.log();
-  address = address ?? signer.address;
+  address = address ?? getSigner().address;
   console.log(`<Meta ${shortAddress(address)}>`);
-  const balance = ethers.formatEther(await signer.provider.getBalance(address));
+  const balance = ethers.formatEther(await getSigner().provider.getBalance(address));
   console.log(balance + 'ETH', address);
 }
 
@@ -62,7 +64,7 @@ async function deployContract<T>(
 
 export
 async function getContract<T>(name: string, address: string) {
-  return await ethers.getContractAt(name, address, signer) as T;
+  return await ethers.getContractAt(name, address, getSigner()) as T;
 }
 
 export
@@ -77,9 +79,9 @@ async function sendETH(address: string, amount: number) {
   console.log();
   console.log('<SendETH>');
   const key = amount.toString() + 'ETH';
-  console.log(key, shortAddress(signer.address), 'to', shortAddress(address));
+  console.log(key, shortAddress(getSigner().address), 'to', shortAddress(address));
   console.log(key, 'sendTransaction...');
-  const tx = await signer.sendTransaction({
+  const tx = await getSigner().sendTransaction({
     to: address,
     value: ethers.parseEther(amount.toString()),
   });
