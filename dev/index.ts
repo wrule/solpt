@@ -7,6 +7,7 @@ async function main() {
   await meta();
   type Factories = typeof Types.factories;
   type Contracts = ReturnType<Factories[keyof Factories]["connect"]>;
+  type A = keyof Factories;
 }
 
 async function dev() {
