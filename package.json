@@ -9,6 +9,7 @@
     "verify:goerli": "npx hardhat verify --network goerli",
     "verify:sepolia": "npx hardhat verify --network sepolia",
     "build": "npx hardhat compile",
+    "factorys": "ts-node commands/buildFactorys.ts",
     "clean": "npx hardhat clean && rimraf cache",
     "test": "npx hardhat test",
     "node": "npx hardhat node",
