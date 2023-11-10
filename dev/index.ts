@@ -1,14 +1,12 @@
 import { ethers } from 'hardhat';
 import { X } from '../typechain-types';
 import { deployContract, init, meta } from './utils';
-import * as A from '../typechain-types/index';
+import * as Types from '../typechain-types';
 
 async function main() {
   await meta();
-  type TA = ReturnType<typeof A.factories.A__factory.connect>;
-  type B = typeof A.factories;
-  type C = B["A__factory"]["connect"];
-  type D = ReturnType<C>;
+  type Factories = typeof Types.factories;
+  type Contracts = ReturnType<Factories[keyof Factories]["connect"]>;
 }
 
 async function dev() {
