@@ -8,7 +8,7 @@ let signer: HardhatEthersSigner;
 let otherSigners: HardhatEthersSigner[];
 let currentSigner: HardhatEthersSigner;
 
-const addressPath = '../artifacts/addresses.json';
+const addressPath = './artifacts/address.json';
 
 function getAddress(name: string) {
   return require(addressPath)[name] as string;
