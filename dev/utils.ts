@@ -7,6 +7,7 @@ import { DeployContractOptions } from '@nomicfoundation/hardhat-ethers/types';
 import mapData from '../typechain-types/map';
 
 type MapData = typeof mapData;
+type Contracts = { [K in keyof MapData]: ReturnType<MapData[K]['connect']> };
 
 let signer: HardhatEthersSigner;
 let otherSigners: HardhatEthersSigner[];
@@ -87,13 +88,22 @@ async function deployContract<T>(
 }
 
 export
+async function deployAllContract(signer = getSigner()): Promise<Contracts> {
+  const names = Object.keys(mapData);
+  const contracts: any[] = [];
+  for (let i = 0; i < names.length; ++i) {
+    contracts.push(await deployContract(names[i], [], signer));
+  }
+  return Object.fromEntries(names.map((name, index) => [name, contracts[index]])) as any;
+}
+
+export
 async function getContract<T>(name: string, address = getAddress(name), signer = getSigner()) {
   return await ethers.getContractAt(name, address, signer) as T;
 }
 
-type GetAllContractType = { [K in keyof MapData]: ReturnType<MapData[K]['connect']> };
 export
-async function getAllContract(signer = getSigner()): Promise<GetAllContractType> {
+async function getAllContract(signer = getSigner()): Promise<Contracts> {
   const names = Object.keys(mapData);
   const contracts = await Promise.all(names.map((name) => getContract(name, getAddress(name), signer)));
   return Object.fromEntries(names.map((name, index) => [name, contracts[index]])) as any;
