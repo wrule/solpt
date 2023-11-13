@@ -1,6 +1,6 @@
 import { ethers } from 'hardhat';
 import { A, X } from '../typechain-types';
-import { deployAllContract, deployContract, getAllContract, getContract, init, meta } from './utils';
+import { deployAllContract, getAllContract, init, meta } from './utils';
 import * as Types from '../typechain-types';
 
 async function main() {
