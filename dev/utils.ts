@@ -91,10 +91,9 @@ async function getContract<T>(name: string, address = getAddress(name), signer =
 
 export
 async function getAllContract(signer = getSigner()) {
-  return Object.fromEntries(await Promise.all(
-    Object.keys(mapData)
-      .map((name) => [name, getContract(name, getAddress(name), signer)])
-  ));
+  const names = Object.keys(mapData);
+  const contracts = await Promise.all(names.map((name) => getContract(name, getAddress(name), signer)));
+  return Object.fromEntries(names.map((name, index) => [name, contracts[index]]));
 }
 
 export
