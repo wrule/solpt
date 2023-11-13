@@ -111,10 +111,10 @@ async function getAllContract(signer = getSigner()): Promise<Contracts> {
 
 export
 async function context(
-  func: (contracts: Contracts) => any,
+  func: (contracts: Contracts, signer?: HardhatEthersSigner) => any,
   signer = getSigner(),
 ) {
-  await func(await getAllContract(signer));
+  await func(await getAllContract(signer), signer);
 }
 
 export
