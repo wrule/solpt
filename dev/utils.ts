@@ -1,3 +1,4 @@
+import fs from 'fs';
 import { ethers } from 'hardhat';
 import { ContractEventPayload, Contract, ParamType } from 'ethers';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
@@ -6,6 +7,19 @@ import { DeployContractOptions } from '@nomicfoundation/hardhat-ethers/types';
 let signer: HardhatEthersSigner;
 let otherSigners: HardhatEthersSigner[];
 let currentSigner: HardhatEthersSigner;
+
+const addressPath = '../artifacts/addresses.json';
+
+function getAddress(name: string) {
+  return require(addressPath)[name] as string;
+}
+
+function setAddress(name: string, address: string) {
+  let data: any = { };
+  try { data = require(addressPath); } catch (e) { }
+  data[name] = address;
+  fs.writeFileSync(addressPath, JSON.stringify(data, null, 2));
+}
 
 export
 async function init() {
