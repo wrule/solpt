@@ -83,7 +83,7 @@ async function deployContract<T>(
 }
 
 export
-async function getContract<T>(name: string, address: string, signer = getSigner()) {
+async function getContract<T>(name: string, address = getAddress(name), signer = getSigner()) {
   return await ethers.getContractAt(name, address, signer) as T;
 }
 
