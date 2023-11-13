@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import { ethers } from 'hardhat';
 import { ContractEventPayload, Contract, ParamType } from 'ethers';
 import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
@@ -8,7 +9,7 @@ let signer: HardhatEthersSigner;
 let otherSigners: HardhatEthersSigner[];
 let currentSigner: HardhatEthersSigner;
 
-const addressPath = './artifacts/address.json';
+const addressPath = path.join(process.cwd(), './artifacts/address.json');
 
 function getAddress(name: string) {
   return require(addressPath)[name] as string;
