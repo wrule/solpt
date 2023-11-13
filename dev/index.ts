@@ -1,13 +1,13 @@
 import { ethers } from 'hardhat';
 import { A, X } from '../typechain-types';
-import { deployAllContract, getAllContract, init, meta } from './utils';
-import * as Types from '../typechain-types';
+import { context, deployAllContract, getAllContract, init, meta } from './utils';
 
 async function main() {
   await meta();
   // await deployAllContract();
-  const contracts = await getAllContract();
-  console.log(contracts.A);
+  context(({ A, X }) => {
+
+  });
 }
 
 async function dev() {
