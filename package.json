@@ -1,6 +1,6 @@
 {
   "name": "solpt",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "main": "dist/index.js",
   "scripts": {
     "dev": "npx hardhat run dev/index.ts --network localhost",
