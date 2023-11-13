@@ -5,6 +5,7 @@ import * as Types from '../typechain-types';
 
 async function main() {
   await meta();
+  // await deployAllContract();
   const contracts = await getAllContract();
   console.log(contracts.A);
 }
