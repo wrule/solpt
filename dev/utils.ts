@@ -110,6 +110,14 @@ async function getAllContract(signer = getSigner()): Promise<Contracts> {
 }
 
 export
+async function context(
+  func: (contracts: Contracts) => any,
+  signer = getSigner(),
+) {
+  await func(await getAllContract(signer));
+}
+
+export
 async function watchContract(contract: Contract | any) {
   contract.on('*', (payload: ContractEventPayload) => {
     console.log(payload.fragment.name, payload.args);
