@@ -78,6 +78,7 @@ async function deployContract<T>(
   contract = await contract.waitForDeployment();
   console.log(name, 'deployment successful!');
   console.log(name, 'contract address:', contract.target);
+  setAddress(name, contract.target.toString());
   return contract as T;
 }
 
