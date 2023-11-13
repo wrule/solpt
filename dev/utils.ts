@@ -6,6 +6,8 @@ import { HardhatEthersSigner } from '@nomicfoundation/hardhat-ethers/signers';
 import { DeployContractOptions } from '@nomicfoundation/hardhat-ethers/types';
 import mapData from '../typechain-types/map';
 
+type MapData = typeof mapData;
+
 let signer: HardhatEthersSigner;
 let otherSigners: HardhatEthersSigner[];
 let currentSigner: HardhatEthersSigner;
@@ -89,11 +91,12 @@ async function getContract<T>(name: string, address = getAddress(name), signer =
   return await ethers.getContractAt(name, address, signer) as T;
 }
 
+type GetAllContractType = { [K in keyof MapData]: ReturnType<MapData[K]['connect']> };
 export
-async function getAllContract(signer = getSigner()) {
+async function getAllContract(signer = getSigner()): Promise<GetAllContractType> {
   const names = Object.keys(mapData);
   const contracts = await Promise.all(names.map((name) => getContract(name, getAddress(name), signer)));
-  return Object.fromEntries(names.map((name, index) => [name, contracts[index]]));
+  return Object.fromEntries(names.map((name, index) => [name, contracts[index]])) as any;
 }
 
 export
