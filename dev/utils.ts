@@ -16,6 +16,7 @@ let currentSigner: HardhatEthersSigner;
 const addressPath = path.join(process.cwd(), './artifacts/address.json');
 
 function getAddress(name: string) {
+  console.log(addressPath);
   return require(addressPath)[name] as string;
 }
 
