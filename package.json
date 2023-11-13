@@ -8,7 +8,7 @@
     "dev:sepolia": "npx hardhat run dev/index.ts --network sepolia",
     "verify:goerli": "npx hardhat verify --network goerli",
     "verify:sepolia": "npx hardhat verify --network sepolia",
-    "build": "npx hardhat compile && npm run factorys",
+    "build": "npx hardhat compile && npm run map",
     "map": "ts-node commands/buildMap.ts",
     "clean": "npx hardhat clean && rimraf cache",
     "test": "npx hardhat test",
