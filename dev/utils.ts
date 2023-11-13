@@ -16,13 +16,12 @@ let currentSigner: HardhatEthersSigner;
 const addressPath = path.join(process.cwd(), './typechain-types/address.json');
 
 function getAddress(name: string) {
-  console.log(addressPath);
   return require(addressPath)[name] as string;
 }
 
 function setAddress(name: string, address: string) {
   let data: any = { };
-  try { data = require(addressPath); } catch (e) { console.log(addressPath); }
+  try { data = require(addressPath); } catch (e) { }
   data[name] = address;
   fs.writeFileSync(addressPath, JSON.stringify(data, null, 2));
 }

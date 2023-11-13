@@ -5,9 +5,8 @@ import * as Types from '../typechain-types';
 
 async function main() {
   await meta();
-  const a = require('./artifacts/address1.json');
-  // const contracts = await deployAllContract();
-  // // console.log(contracts.A);
+  const contracts = await getAllContract();
+  console.log(contracts.A);
 }
 
 async function dev() {
