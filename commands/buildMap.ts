@@ -8,7 +8,7 @@ function contractNames() {
 }
 
 function main() {
-  fs.writeFileSync('typechain-types/factorys.ts', `
+  fs.writeFileSync('typechain-types/map.ts', `
 import * as Types from '.';
 
 export default {
