@@ -7,8 +7,7 @@ async function main() {
   await meta();
   await deployContract('A');
   await deployContract('X');
-  const data = await getAllContract();
-  console.log(data);
+  const { A, X } = await getAllContract();
 }
 
 async function dev() {
